@@ -102,7 +102,7 @@ def getstream():
                 "AppId": "3", "AppVer": "1025", "VpcVer": "1.0.11",
                 "Language": "tr", "Token": "", "VideoId": videoid
             }
-            r = requests.post("https://1xlite-900665.top/cinema", json=veriler)
+           r = requests.post("https://1xlite-900665.top/cinema", json=veriler, timeout=30)
             print("Post isteği tamamlandı, durum kodu:", r.status_code)
             print("Yanıt:", r.text[:500])  # İlk 500 karakteri yazdır
 
