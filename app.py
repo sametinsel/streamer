@@ -104,17 +104,23 @@ def getstream():
             }
             r = requests.post("https://1xlite-900665.top/cinema", json=veriler)
             print("Post isteği tamamlandı, durum kodu:", r.status_code)
-            print("Yanıt:", r.text[:200])  # İlk 200 karakteri yazdır
+            print("Yanıt:", r.text[:500])  # İlk 500 karakteri yazdır
 
             if "FullscreenAllowed" in r.text:
                 veri = re.findall('"URL":"(.*?)"', r.text)
-                if veri:
-                    veri = veri[0].replace("\\/", "__")
-                    veri = veri.replace('edge100', 'edge10')
-                    print("İşlenmiş URL:", veri)
-                    if "m3u8" in veri:
-                        return f"https://orca-app-y5vl4.ondigitalocean.app/{veri}&videoid={videoid}"
-            return "Veri yok"
+                if not veri:
+                    print("Regex ile URL bulunamadı.")
+                    return "Veri yok"
+
+                veri = veri[0].replace("\\/", "__")
+                veri = veri.replace('edge100', 'edge10')
+                print("İşlenmiş URL:", veri)
+
+                if "m3u8" in veri:
+                    return f"https://orca-app-y5vl4.ondigitalocean.app/{veri}&videoid={videoid}"
+            else:
+                print("Yanıtta 'FullscreenAllowed' bulunamadı.")
+                return "Veri yok"
     except Exception as e:
         print("Hata getstream fonksiyonunda:", str(e))
         return f"Hata oluştu: {str(e)}", 500
