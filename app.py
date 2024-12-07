@@ -94,16 +94,16 @@ def getstream():
             veri = r.text
             veri = re.findall('"URL":"(.*?)"',veri)
             veri = veri[0].replace("\/", "__")
-            veri = veri.replace('edge3','edge10')
-            veri = veri.replace('edge100','edge10')
-            veri = veri.replace('edge4','edge10')
-            veri = veri.replace('edge2','edge10')
-            veri = veri.replace('edge5','edge10')
-            veri = veri.replace('edge1','edge10')
-            veri = veri.replace('edge6', 'edge10')
-            veri = veri.replace('edge7', 'edge10')
+            veri = veri.replace('edge3','edge5')
+            veri = veri.replace('edge100','edge5')
+            veri = veri.replace('edge4','edge5')
+            veri = veri.replace('edge2','edge5')
+            veri = veri.replace('edge10','edge5')
+            veri = veri.replace('edge1','edge5')
+            veri = veri.replace('edge6', 'edge5')
+            veri = veri.replace('edge7', 'edge5')
             veri = veri.replace(':43434','')
-            veri = veri.replace('edge100','edge10')
+            veri = veri.replace('edge100','edge5')
             if "m3u8" in veri:
                 '''return "https://orca-app-y5vl4.ondigitalocean.app/getm3u8?source="+veri+'&videoid='+videoid'''
                 return "https://orca-app-y5vl4.ondigitalocean.app/"+veri+'&videoid='+videoid
